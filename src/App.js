@@ -9,6 +9,8 @@ export default function App() {
 }
 
 function Accordion() {
+  const [currOpen, setIsOpen] = useState(null);
+
   return (
     <div className="accordion">
       {faqs.map((item, i) => (
@@ -17,21 +19,25 @@ function Accordion() {
           title={item.title}
           text={item.text}
           key={i}
+          currOpen={currOpen}
+          onOpen={setIsOpen}
         />
       ))}
     </div>
   );
 }
 
-function AccordionItem({ num, title, text }) {
-  const [isOpen, setIsOpen] = useState(false);
+function AccordionItem({ num, title, text, currOpen, onOpen }) {
+  // const [isOpen, setIsOpen] = useState(false);
   function handleClick() {
     if (!isOpen) {
-      setIsOpen(true);
+      onOpen(num);
     } else {
-      setIsOpen(false);
+      onOpen(null);
     }
   }
+
+  const isOpen = num === currOpen;
   return (
     <div className={isOpen ? `item open` : "item"} onClick={handleClick}>
       <p className="number">{num < 9 ? `0${num}` : { num }}</p>
