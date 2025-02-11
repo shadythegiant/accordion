@@ -1,6 +1,5 @@
 # React Accordion Layout
 
-![React Accordion Screenshot](screenshot.png)
 
 A simple React Accordion Layout project to help you learn state management in React. This project demonstrates how to toggle content visibility when clicking on an accordion header.
 
